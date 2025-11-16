@@ -36,7 +36,7 @@ if __name__ == "__main__":
         match user_option:
             case "1": crud.read_console()
             case "2": crud.create_console()
-            case "3": print("Update Data")
+            case "3": crud.update_console()
             case "4": print("Delete Data")
             case "5": print("Keluar")
             

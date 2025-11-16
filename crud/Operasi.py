@@ -48,11 +48,20 @@ def create_first():
     except:
         print("gagal")
         
-def read():
+def read(**kwargs):
     try:
         with open(Database.DB_NAME, 'r') as file:
             content = file.readlines()
-            return content
+            jumlah_tugas = len(content)
+            if "index" in kwargs:
+                index_tugas = kwargs["index"]-1
+                if index_tugas < 0 or index_tugas > jumlah_tugas:
+                    return False
+                else:
+                    return content[index_tugas]
+            else:
+                return content
+            
     except:
         print("eror membaca")
         return False
