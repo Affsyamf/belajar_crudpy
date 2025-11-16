@@ -3,6 +3,27 @@ from . Util import random_string
 import time
 from . import Database
 
+
+def update(no_tugas,pk,date_at,judul,deskripsi,assign):
+    data = Database.TEMPLATE.copy()
+    
+    data["pk"] = pk
+    data["date_at"] = date_at   
+    data["judul"] = judul 
+    data["deskripsi"] = deskripsi 
+    data["assign"] = assign
+    
+    data_str = f'{data["pk"]}, {data["date_at"]}, {data["judul"]}, {data["deskripsi"]}, {data["assign"]}\n'
+
+    panjang_data = len(data_str)
+    
+    try:
+        with (open(Database.DB_NAME,'r+',encoding="utf-8")) as file:
+            file.seek(panjang_data*(no_tugas-1))
+            file.write(data_str)
+    except:
+        print("Eror update")
+    
 def create(judul, deskripsi, assign):
     data = Database.TEMPLATE.copy()
     

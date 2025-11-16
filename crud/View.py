@@ -2,10 +2,11 @@ from . import Operasi
 
 def read_console():
     data_file = Operasi.read()
+    index_map = []
     
     if not data_file:
         print("Tidak ada data untuk ditampilkan.")
-        return
+        return index_map
     
     # header kolom
     print("\n" + "=" * 100)
@@ -13,7 +14,7 @@ def read_console():
     print("-" * 100)
 
     # data rows
-    for index, data in enumerate(data_file):
+    for index, data in enumerate(data_file, start=1):
         data_break = [d.strip() for d in data.split(",")]
 
         # cegah error kalau jumlah kolom tidak pas
@@ -25,6 +26,8 @@ def read_console():
         judul     = data_break[2]
         deskripsi = data_break[3]
         assign    = data_break[4]
+        
+        index_map.append(pk)
 
         print(
             f"{str(index):<4} | "
@@ -34,3 +37,4 @@ def read_console():
         )
 
     print("=" * 100 + "\n")
+    return index_map
