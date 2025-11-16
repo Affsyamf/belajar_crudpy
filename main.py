@@ -42,8 +42,6 @@ if __name__ == "__main__":
             
         if user_option == "5":
             break
-        else:
-            print("Nomor tidak ada")
         
         lanjut = input("Lanjut ? y/n : ")
         if lanjut == "n" or lanjut == "N":
