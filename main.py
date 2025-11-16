@@ -15,7 +15,6 @@ if __name__ == "__main__":
     # check database itu ada atau tidak
     crud.init_console()
     
-    
     while(True):
         match sistem_operasi:
             case 'posix':os.system("clear")
@@ -37,14 +36,14 @@ if __name__ == "__main__":
             case "1": crud.read_console()
             case "2": crud.create_console()
             case "3": crud.update_console()
-            case "4": print("Delete Data")
+            case "4": crud.delete_console()
             case "5": print("Keluar")
             
         if user_option == "5":
             break
         
         lanjut = input("Lanjut ? y/n : ")
-        if lanjut == "n" or lanjut == "N":
+        if lanjut.lower() == "n":
             break
         
     print("Program Selesai Terima Kasih")

@@ -2,7 +2,7 @@ from . import Operasi
 
 def read_console():
     data_file = Operasi.read()
-    index_map = []
+    index_map = ["pk1", "pk2", "pk4"]
     
     if not data_file:
         print("Tidak ada data untuk ditampilkan.")

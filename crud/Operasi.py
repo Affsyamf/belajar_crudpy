@@ -2,7 +2,35 @@ from . import Database
 from . Util import random_string
 import time
 from . import Database
+import os
 
+def delete(no_tugas):
+    try:
+        # Baca seluruh data
+        with open(Database.DB_NAME, 'r', encoding="utf-8") as file:
+            lines = file.readlines()
+
+        # Cek nomor valid
+        if no_tugas < 1 or no_tugas > len(lines):
+            print("Nomor tugas tidak valid")
+            return
+
+        # Tulis ulang tanpa baris yg dihapus
+        with open("data_temp.txt", "w", encoding="utf-8") as temp:
+            for i, line in enumerate(lines, start=1):
+                if i != no_tugas:
+                    temp.write(line)
+
+        # Hapus file lama
+        if os.path.exists(Database.DB_NAME):
+            os.remove(Database.DB_NAME)
+
+        # Rename temp menjadi DB utama
+        os.rename("data_temp.txt", Database.DB_NAME)
+
+    except Exception as e:
+        print("Delete error:", e)
+                    
 
 def update(no_tugas,pk,date_at,judul,deskripsi,assign):
     data = Database.TEMPLATE.copy()
