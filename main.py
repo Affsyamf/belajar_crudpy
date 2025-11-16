@@ -29,17 +29,24 @@ if __name__ == "__main__":
         print(f"2. Create Task")
         print(f"3. Update Task")
         print(f"4. Delete Task")
+        print(f"5. Keluar")
         
         user_option = input("Masukan pilihan 1-5 : ")
        
         match user_option:
             case "1": crud.read_console()
-            case "2": print("Create Data")
+            case "2": crud.create_console()
             case "3": print("Update Data")
             case "4": print("Delete Data")
+            case "5": print("Keluar")
+            
+        if user_option == "5":
+            break
+        else:
+            print("Nomor tidak ada")
         
         lanjut = input("Lanjut ? y/n : ")
         if lanjut == "n" or lanjut == "N":
             break
         
-    print("Selesai")
+    print("Program Selesai Terima Kasih")
